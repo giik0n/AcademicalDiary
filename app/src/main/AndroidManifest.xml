@@ -9,7 +9,7 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -28,6 +28,15 @@
         <activity android:name=".AddActivities.AddPaymentActivity" />
         <activity android:name=".AddActivities.AddCalendarActivity" />
         <activity android:name=".AddActivities.AddScheduleActivity"></activity>
+        <receiver
+            android:name=".AlarmReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="singh.ajit.action.DISPLAY_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

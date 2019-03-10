@@ -460,4 +460,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void upFaculty() {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("UPDATE "+TABLE_STUDENTS+" SET "+KEY_COURSE +" = "+KEY_COURSE+" + 1");
+        db.close();
+    }
 }

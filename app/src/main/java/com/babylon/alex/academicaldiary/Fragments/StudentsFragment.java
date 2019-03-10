@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.Filter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
@@ -29,6 +30,7 @@ public class StudentsFragment extends Fragment {
     ListView listView;
     SearchView search;
     StudentsAdapter adapter;
+    ImageView upFaculty;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,6 +39,14 @@ public class StudentsFragment extends Fragment {
             myDatabaseHelper = new MyDatabaseHelper(getActivity());
             listView = view.findViewById(R.id.studentsListView);
             search = view.findViewById(R.id.searchStudents);
+            upFaculty = view.findViewById(R.id.upStudentsFaculty);
+            upFaculty.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    myDatabaseHelper.upFaculty();
+                    refreshList();
+                }
+            });
             refreshList();
 
             search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

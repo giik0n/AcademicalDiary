@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.babylon.alex.academicaldiary.Adapters.ScheduleAdapter;
 import com.babylon.alex.academicaldiary.MyDatabaseHelper;
@@ -40,6 +42,7 @@ public class ScheduleFragment extends Fragment {
         data = new ArrayList<>();
         listView = view.findViewById(R.id.scheduleListView);
         refreshList();
+
 
 
         return view;

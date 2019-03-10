@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
     private String currentFragment = "";
 
     private String name = "";
-
+    MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(this);
 
     private final String studentFragmentString = "studentsFragment";
     private final String lessonsFragmentString = "lessonsFragment";
@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        MyDatabaseHelper myDatabaseHelper = new MyDatabaseHelper(this);
+
     }
 
     @Override
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity
                                     PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
                                     document.open();
                                     for (int i = 0; i<list3.size();i++){
-                                        document.add(new Paragraph("\nLesson: "+list3.get(i).getLesson()+"\nType: "+list3.get(i).getType()+
+                                        document.add(new Paragraph("\nLesson: "+myDatabaseHelper.getLessonNameById(String.valueOf(list3.get(i).getLesson()))+"\nType: "+list3.get(i).getType()+
                                         "\nDate: "+list3.get(i).getDate()+"\nTime: "+list3.get(i).getTime()+"\nClassroom: "+list3.get(i).getClassroom()+"\n"));
                                     }
                                     document.close();
