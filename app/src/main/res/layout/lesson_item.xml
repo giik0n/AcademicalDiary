@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/lessonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="Name"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lessonTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:hint="Teacher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lessonName" />
+
+    <TextView
+        android:id="@+id/lessonHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="Hours"
+        app:layout_constraintBottom_toBottomOf="@+id/lessonName"
+        app:layout_constraintStart_toEndOf="@+id/lessonName"
+        app:layout_constraintTop_toTopOf="@+id/lessonName" />
+
+    <TextView
+        android:id="@+id/lessonType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="Type"
+        app:layout_constraintBottom_toBottomOf="@+id/lessonTeacher"
+        app:layout_constraintStart_toEndOf="@+id/lessonTeacher"
+        app:layout_constraintTop_toTopOf="@+id/lessonTeacher" />
+
+    <TextView
+        android:id="@+id/lessonSemester"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="Semester"
+        app:layout_constraintBottom_toBottomOf="@+id/lessonType"
+        app:layout_constraintStart_toEndOf="@+id/lessonType"
+        app:layout_constraintTop_toTopOf="@+id/lessonType" />
+
+    <ImageView
+        android:id="@+id/lessonMore"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more_vert_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+</android.support.constraint.ConstraintLayout>
