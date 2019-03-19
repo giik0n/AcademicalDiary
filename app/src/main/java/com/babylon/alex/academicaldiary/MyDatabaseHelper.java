@@ -58,7 +58,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
     Context context;
-
+                // клас для работы с бд
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "Diary";
 
@@ -68,7 +68,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {// создание бд
 
         String[] create_tables = {
                 "CREATE TABLE "+TABLE_LESSONS+" ("+KEY_ID+
@@ -103,7 +103,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<Student> getStudents(){
+    public List<Student> getStudents(){// получить всех студентов
         List<Student> students = new ArrayList<>();
         String sqlQuery = "SELECT * FROM " + TABLE_STUDENTS;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -132,7 +132,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return students;
     }
 
-    public  void addNewStudent(Student student) {
+    public  void addNewStudent(Student student) {// добавить студента
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(KEY_ID);
@@ -154,13 +154,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteStudent(Student student){
+    public void deleteStudent(Student student){// удалить студента
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_STUDENTS,KEY_ID+" =?",new String[]{String.valueOf(student.getId())});
         db.close();
     }
 
-    public List<Lesson> getLessons() {
+    public List<Lesson> getLessons() {// получить все уроки
         List<Lesson> lessons = new ArrayList<>();
         String sqlQuery = "SELECT * FROM " + TABLE_LESSONS;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -181,13 +181,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void deleteLesson(Lesson lesson) {
+    public void deleteLesson(Lesson lesson) {// удалить урок
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_LESSONS,KEY_ID+" =?",new String[]{String.valueOf(lesson.getId())});
         db.close();
     }
 
-    public  void addNewLesson(Lesson student) {
+    public  void addNewLesson(Lesson student) {// добавить новый урок
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(KEY_ID);
@@ -200,7 +200,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void addNewSession(Session session) {
+    public void addNewSession(Session session) {// добавить новый предмет сессии
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(KEY_ID);
@@ -213,7 +213,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<Session> getSession() {
+    public List<Session> getSession() {// получить всю сессию
         List<Session> session = new ArrayList<>();
         String sqlQuery = "SELECT * FROM " + TABLE_SESSION;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -233,13 +233,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return session;
     }
 
-    public void deleteSession(Session session) {
+    public void deleteSession(Session session) {// удалить предмет из сессии
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_SESSION,KEY_ID+" =?",new String[]{String.valueOf(session.getId())});
         db.close();
     }
 
-    public String getLessonNameById(String id){
+    public String getLessonNameById(String id){// подучить имя урока по его id
         String lessonName = "";
         String sqlQuery = "SELECT * FROM " + TABLE_LESSONS + " WHERE "+KEY_ID+" = '"+id+"'";
         SQLiteDatabase db = this.getWritableDatabase();
@@ -250,7 +250,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return lessonName;
     }
 
-    public List<Payment> getPayment() {
+    public List<Payment> getPayment() {// получить всю оплату
         List<Payment> payment = new ArrayList<>();
         String sqlQuery = "SELECT * FROM " + TABLE_PAYMENT;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -268,7 +268,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return payment;
     }
 
-    public void addNewPayment(Payment payment) {
+    public void addNewPayment(Payment payment) {// добавить оплату
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(KEY_ID);
@@ -279,13 +279,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deletePayment(Payment payment) {
+    public void deletePayment(Payment payment) {// удалить оплату
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_PAYMENT,KEY_ID+" =?",new String[]{String.valueOf(payment.getId())});
         db.close();
     }
 
-    public List<Calendar> getCalendar() {
+    public List<Calendar> getCalendar() {// получить расписание учебних мероприятий
         List<Calendar> calendar = new ArrayList<>();
         String sqlQuery = "SELECT * FROM " + TABLE_CALENDAR;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -304,7 +304,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return calendar;
     }
 
-    public void addNewCalendar(Calendar calendar) {
+    public void addNewCalendar(Calendar calendar) {// добавить меропритие
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(KEY_ID);
@@ -316,13 +316,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteCalendar(Calendar calendar) {
+    public void deleteCalendar(Calendar calendar) {// удалить мероприятие
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_CALENDAR,KEY_ID+" =?",new String[]{String.valueOf(calendar.getId())});
         db.close();
     }
 
-    public List<Schedule> getSchedule() {
+    public List<Schedule> getSchedule() {// получить расписание
         List<Schedule> schedule = new ArrayList<>();
         String sqlQuery = "SELECT * FROM " + TABLE_SCHEDULE;
         SQLiteDatabase db = this.getWritableDatabase();
@@ -341,7 +341,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return schedule;
     }
 
-    public void addNewSchedule(Schedule schedule) {
+    public void addNewSchedule(Schedule schedule) {// добавить расписание
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.putNull(KEY_ID);
@@ -353,12 +353,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteSchedule(Schedule schedule) {
+    public void deleteSchedule(Schedule schedule) {// удалить расписание
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_SCHEDULE,KEY_ID+" =?",new String[]{String.valueOf(schedule.getId())});
         db.close();
     }
-    public List<Schedule> getScheduleByDay(String day){
+    public List<Schedule> getScheduleByDay(String day){// получить расписание для каждого дня
         List<Schedule> schedules = new ArrayList<>();
         String sqlQuery = "SELECT * FROM " + TABLE_SCHEDULE + " WHERE "+KEY_DATE +" = \""+ day+"\" ORDER BY position ASC";
         SQLiteDatabase db = this.getWritableDatabase();
@@ -377,7 +377,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return schedules;
     }
 
-    public void updateCalendar(Calendar calendar){
+    public void updateCalendar(Calendar calendar){// обновить мероприятие
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_ID,calendar.getId());
@@ -389,7 +389,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateLesson(Lesson lesson){
+    public void updateLesson(Lesson lesson){// обновить урок
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_ID,lesson.getId());
@@ -402,7 +402,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateSession(Session session){
+    public void updateSession(Session session){// обновить сессию
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_ID,session.getId());
@@ -415,7 +415,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updatePayment(Payment payment){
+    public void updatePayment(Payment payment){// обновить оплату
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_ID,payment.getId());
@@ -426,7 +426,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateSchedule(Schedule schedule){
+    public void updateSchedule(Schedule schedule){// обновить расписание
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_ID,schedule.getId());
@@ -438,7 +438,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void updateStudent(Student student){
+    public void updateStudent(Student student){// обновить студента
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_ID,student.getId());
@@ -460,7 +460,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void upFaculty() {
+    public void upFaculty() {//перевести на следующий курс
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("UPDATE "+TABLE_STUDENTS+" SET "+KEY_COURSE +" = "+KEY_COURSE+" + 1");

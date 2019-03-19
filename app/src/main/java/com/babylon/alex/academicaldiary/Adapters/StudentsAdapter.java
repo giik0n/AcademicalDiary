@@ -92,8 +92,9 @@ public class StudentsAdapter extends BaseAdapter implements Filterable {
         });
 
         name.setText(list.get(i).getName());
-        course.setText("Course : "+list.get(i).getCourse());
-        faculty.setText("Faculty : "+list.get(i).getFaculty());
+        course.setText(activity.getString(R.string.course)+list.get(i).getCourse());
+        
+        faculty.setText(activity.getString(R.string.faculty)+list.get(i).getFaculty());
 
         return view;
     }

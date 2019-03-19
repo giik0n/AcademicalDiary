@@ -19,7 +19,7 @@ import com.babylon.alex.academicaldiary.pojo.Student;
 import java.util.Calendar;
 
 public class AddStudentActivity extends AppCompatActivity {
-
+    // окдно добавления студентов
     TextView birthday;
     EditText name, homeAddress, currentAddress, phone, course, faculty, email, privilege,
     parentsName, parentsAddress, aboutFamily, avgRating, studyForm;
@@ -59,7 +59,7 @@ public class AddStudentActivity extends AppCompatActivity {
                         birthday.setText(day+"."+month+"."+i);
                     }
                 }, year, month, day);
-                mDatePicker.setTitle("Choose Date");
+                mDatePicker.setTitle(getString(R.string.choose_date));
                 mDatePicker.show();
             }
         });
@@ -99,10 +99,10 @@ public class AddStudentActivity extends AppCompatActivity {
                 );
                if (!editMode) {
                    myDatabaseHelper.addNewStudent(student);
-                   Toast.makeText(AddStudentActivity.this, "Student added successfully", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(AddStudentActivity.this, R.string.student_added_successfully, Toast.LENGTH_SHORT).show();
                }else{
                    myDatabaseHelper.updateStudent(student);
-                   Toast.makeText(AddStudentActivity.this, "Updated!", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(AddStudentActivity.this, R.string.updated, Toast.LENGTH_SHORT).show();
                }
             }
         });

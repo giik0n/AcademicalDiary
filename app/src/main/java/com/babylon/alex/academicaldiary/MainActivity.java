@@ -51,18 +51,18 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+ //главный клас с которого запускается программа
     FragmentTransaction ft;
 
-    LessonsFragment lessonsFragment;
+    LessonsFragment lessonsFragment;//фрагменты для разных вкладок с информацией
     PaymentFragment paymentFragment;
     ScheduleFragment scheduleFragment;
     SessionFragment sessionFragment;
     StudentsFragment studentsFragment;
     StudyingWorkFragment studyingWorkFragment;
 
-    MenuItem printButton;
-    FloatingActionButton fab;
+    MenuItem printButton;//кнопка друку
+    FloatingActionButton fab;//кнопка додавання
     private String currentFragment = "";
 
     private String name = "";
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-        lessonsFragment = new LessonsFragment();
+        lessonsFragment = new LessonsFragment();//инициализация фрагментов
         paymentFragment = new PaymentFragment();
         scheduleFragment = new ScheduleFragment();
         sessionFragment = new SessionFragment();
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        fab = findViewById(R.id.floatingActionButton);
+        fab = findViewById(R.id.floatingActionButton);//кнопка добавления в зависимости от текузего фрагмента вызывает нужное активити добавления
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,43 +151,44 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose file name");
+        builder.setTitle(R.string.choose_file_name);
         final EditText input = new EditText(this);
         builder.setView(input);
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
         switch (id){
-            case R.id.action_settings:
+            case R.id.action_settings://кнопка виходу
+                finish();
             break;
 
-            case R.id.action_print:
+            case R.id.action_print:// кнопка друку
                 switch (currentFragment){
-                    case scheduleFragmentString:
+                    case scheduleFragmentString://печать фрагмента расписания
                         final ArrayList<Object> listSchedule = scheduleFragment.getCurrentList();
 
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which) {
+                            public void onClick(DialogInterface dialog, int which) {//диалог для ввода названия файла для печати
                                 name = input.getText().toString();
 
                                         File docsFolder = new File(Environment.getExternalStorageDirectory() + "/Documents/AcademicalDiary");
                                         if (!docsFolder.exists()) {
                                             docsFolder.mkdir();
-                                            Toast.makeText(getApplicationContext(), "Created new Folder ", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), R.string.create_new_folder, Toast.LENGTH_SHORT).show();
                                         }
 
                                         File pdfFile = new File(docsFolder.getAbsolutePath(),name+".pdf");
                                         try {
                                             Document document = new Document();
                                             PdfWriter.getInstance(document, new FileOutputStream(pdfFile));
-                                            document.open();
+                                            document.open();// вивод по строчкам в пдф файл
                                             for (int i = 0; i<listSchedule.size();i++){
                                                 if (listSchedule.get(i) instanceof Schedule){
-                                                    document.add(new Paragraph("Position:"+((Schedule) listSchedule.get(i)).getPosition() + " Lesson: "+((Schedule) listSchedule.get(i)).getLesson() + " Classroom: "+((Schedule) listSchedule.get(i)).getClassroom()+"\n"));
+                                                    document.add(new Paragraph(getString(R.string.position)+((Schedule) listSchedule.get(i)).getPosition() + " Lesson: "+((Schedule) listSchedule.get(i)).getLesson() + " Classroom: "+((Schedule) listSchedule.get(i)).getClassroom()+"\n"));
                                                 }else {
                                                     document.add(new Paragraph("\n"+listSchedule.get(i).toString()));
                                                 }
@@ -203,7 +204,7 @@ public class MainActivity extends AppCompatActivity
                         });
                         builder.show();
                         break;
-                    case lessonsFragmentString:
+                    case lessonsFragmentString://печать фрагмента уроков
                         final ArrayList<Lesson> list2 = (ArrayList<Lesson>) lessonsFragment.getCurrentList();
 
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -214,7 +215,7 @@ public class MainActivity extends AppCompatActivity
                                 File docsFolder = new File(Environment.getExternalStorageDirectory() + "/Documents/AcademicalDiary");
                                 if (!docsFolder.exists()) {
                                     docsFolder.mkdir();
-                                    Toast.makeText(getApplicationContext(), "Created new Folder ", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.create_new_folder, Toast.LENGTH_SHORT).show();
                                 }
 
                                 File pdfFile = new File(docsFolder.getAbsolutePath(),name+".pdf");
@@ -236,7 +237,7 @@ public class MainActivity extends AppCompatActivity
                         });
                         builder.show();
                         break;
-                    case sessionFragmentString:
+                    case sessionFragmentString://печать фрагмента сессии
                         final ArrayList<Session> list3 = (ArrayList<Session>) sessionFragment.getCurrentList();
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -246,7 +247,7 @@ public class MainActivity extends AppCompatActivity
                                 File docsFolder = new File(Environment.getExternalStorageDirectory() + "/Documents/AcademicalDiary");
                                 if (!docsFolder.exists()) {
                                     docsFolder.mkdir();
-                                    Toast.makeText(getApplicationContext(), "Created new Folder", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.create_new_folder, Toast.LENGTH_SHORT).show();
                                 }
 
                                 File pdfFile = new File(docsFolder.getAbsolutePath(),name+".pdf");
@@ -269,7 +270,7 @@ public class MainActivity extends AppCompatActivity
 
                         builder.show();
                         break;
-                    case paymentFragmentString:
+                    case paymentFragmentString://печать фрагмента оплати
                         final ArrayList<Payment> list4 = (ArrayList<Payment>) paymentFragment.getCurrentList();
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -279,7 +280,7 @@ public class MainActivity extends AppCompatActivity
                                 File docsFolder = new File(Environment.getExternalStorageDirectory() + "/Documents/AcademicalDiary");
                                 if (!docsFolder.exists()) {
                                     docsFolder.mkdir();
-                                    Toast.makeText(getApplicationContext(), "Created new Folder", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.create_new_folder, Toast.LENGTH_SHORT).show();
                                 }
 
                                 File pdfFile = new File(docsFolder.getAbsolutePath(),name+".pdf");
@@ -300,7 +301,7 @@ public class MainActivity extends AppCompatActivity
                         });
                         builder.show();
                         break;
-                    case studyingWorkFragmentString:
+                    case studyingWorkFragmentString://печать фрагмента учебниз работ
                         final ArrayList<Calendar> list5 = (ArrayList<Calendar>) studyingWorkFragment.getCurrentList();
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -310,7 +311,7 @@ public class MainActivity extends AppCompatActivity
                                 File docsFolder = new File(Environment.getExternalStorageDirectory() + "/Documents/AcademicalDiary");
                                 if (!docsFolder.exists()) {
                                     docsFolder.mkdir();
-                                    Toast.makeText(getApplicationContext(), "Created new Folder", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.create_new_folder, Toast.LENGTH_SHORT).show();
                                 }
 
                                 File pdfFile = new File(docsFolder.getAbsolutePath(),name+".pdf");
@@ -331,7 +332,7 @@ public class MainActivity extends AppCompatActivity
                         });
                         builder.show();
                         break;
-                    case studentFragmentString:
+                    case studentFragmentString://печать фрагмента студентов
                         final ArrayList<Student> list6 = (ArrayList<Student>) studentsFragment.getCurrentList();
                         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -341,7 +342,7 @@ public class MainActivity extends AppCompatActivity
                                 File docsFolder = new File(Environment.getExternalStorageDirectory() + "/Documents/AcademicalDiary");
                                 if (!docsFolder.exists()) {
                                     docsFolder.mkdir();
-                                    Toast.makeText(getApplicationContext(), "Created new Folder", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), R.string.create_new_folder, Toast.LENGTH_SHORT).show();
                                 }
 
                                 File pdfFile = new File(docsFolder.getAbsolutePath(),name+".pdf");
@@ -384,35 +385,35 @@ public class MainActivity extends AppCompatActivity
         fab.show();
 
         switch (id){
-            case R.id.nav_students:
+            case R.id.nav_students:// выбор фрагментов с информацией
                 ft.replace(R.id.container,studentsFragment);
                 currentFragment = studentFragmentString;
-                setTitle("Students");
+                setTitle(getString(R.string.students));
                 break;
             case R.id.nav_lessons:
                 ft.replace(R.id.container,lessonsFragment);
                 currentFragment = lessonsFragmentString;
-                setTitle("Lessons");
+                setTitle(getString(R.string.lessons));
                 break;
             case R.id.nav_schedule:
                 ft.replace(R.id.container,scheduleFragment);
                 currentFragment = scheduleFragmentString;
-                setTitle("Schedule");
+                setTitle(getString(R.string.schedule));
                 break;
             case R.id.nav_session:
                 ft.replace(R.id.container,sessionFragment);
                 currentFragment = sessionFragmentString;
-                setTitle("Session");
+                setTitle(getString(R.string.session));
                 break;
             case R.id.nav_payment:
                 ft.replace(R.id.container,paymentFragment);
                 currentFragment = paymentFragmentString;
-                setTitle("Payment");
+                setTitle(getString(R.string.payment));
                 break;
             case R.id.nav_edu:
                 ft.replace(R.id.container,studyingWorkFragment);
                 currentFragment = studyingWorkFragmentString;
-                setTitle("Educational Activities");
+                setTitle(getString(R.string.edu_act));
                 break;
         }
 
@@ -425,7 +426,7 @@ public class MainActivity extends AppCompatActivity
     public void callInput(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose file name");
+        builder.setTitle(R.string.create_new_folder);
         final EditText input = new EditText(this);
         builder.setView(input);
 
@@ -435,7 +436,7 @@ public class MainActivity extends AppCompatActivity
                  name = input.getText().toString();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -444,7 +445,7 @@ public class MainActivity extends AppCompatActivity
         builder.show();
     }
 
-    private void previewPdf(File pdfFile) {
+    private void previewPdf(File pdfFile) {// просмотр пдф
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             Uri uri = Uri.fromFile(pdfFile);

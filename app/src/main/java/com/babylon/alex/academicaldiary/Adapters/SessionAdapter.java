@@ -73,7 +73,7 @@ public class SessionAdapter extends BaseAdapter implements Filterable{
         TextView lesson = view.findViewById(R.id.sessionLesson);
         String tmp = myDatabaseHelper.getLessonNameById(String.valueOf(list.get(i).getLesson()));
         if (tmp.length() == 0 || tmp.equals("")){
-            lesson.setText("Lesson not found");
+            lesson.setText(R.string.lesson_not_found);
         }else{
             lesson.setText(tmp);
         }

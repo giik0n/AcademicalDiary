@@ -25,6 +25,8 @@ public class ScheduleFragment extends Fragment {
     public ScheduleFragment() {
 
     }
+
+    //фрагмент расписания
     List<Object> data;
     MyDatabaseHelper myDatabaseHelper;
     ListView listView;
@@ -42,13 +44,10 @@ public class ScheduleFragment extends Fragment {
         data = new ArrayList<>();
         listView = view.findViewById(R.id.scheduleListView);
         refreshList();
-
-
-
         return view;
     }
 
-    private void refreshList() {
+    private void refreshList() {// добавление всего расписание по каждому дню недели
         data.clear();
         monday = myDatabaseHelper.getScheduleByDay(getString(R.string.monday));
         tuesday = myDatabaseHelper.getScheduleByDay(getString(R.string.tuesday));

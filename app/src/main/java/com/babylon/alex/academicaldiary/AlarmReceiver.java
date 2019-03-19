@@ -15,6 +15,8 @@ import com.babylon.alex.academicaldiary.R;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+        // класс для вызова напоминания
+
         Intent notificationIntent = new Intent(context, MainActivity.class);
         String text = intent.getExtras().getString("Text");
         String title = intent.getExtras().getString("Title");

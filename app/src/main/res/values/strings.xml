@@ -1,23 +1,18 @@
 <resources>
     <string name="app_name">Academical Diary</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="students">Students</string>
-    <string name="lessons">Lessons</string>
-    <string name="schedule">Schedule</string>
-    <string name="session">Session</string>
-    <string name="payment">Payment</string>
     <string name="educational_activities">Educational Activities</string>
-    <string name="service">Service</string>
+    <string name="service" translatable="false">Service</string>
     <string name="search">Search</string>
     <string name="print">Print</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="add">Add</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
@@ -27,4 +22,62 @@
     <string name="chooseDate">Choose Date</string>
     <string name="chooseTime">Choose Time</string>
     <string name="addNotification">Add notification</string>
+    <string name="exit">Exit</string>
+    <string name="lesson_not_found">Lesson not found</string>
+    <string name="course">Course :</string>
+    <string name="faculty">Faculty :</string>
+    <string name="choose_date">Choose Date</string>
+    <string name="activity_added_successfully">Activity added successfully</string>
+    <string name="updated">Updated!</string>
+    <string name="lesson_added_successfully">Lesson added successfully</string>
+    <string name="new_payment_added_successfully">New payment added successfully</string>
+    <string name="new_lesson_addded_to_schedule_successfully">New lesson added to schedule successfully</string>
+    <string name="session_added_successfully">Session added successfully</string>
+    <string name="student_added_successfully">Student added successfully</string>
+    <string name="choose_file_name">Choose file name</string>
+    <string name="cancel">Cancel</string>
+    <string name="create_new_folder">Created new Folder</string>
+    <string name="position">Position:</string>
+    <string name="edu_act">Educational Activities</string>
+    <string name="add_new_activity">Add new Activity</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="time">Time</string>
+    <string name="teacher">Teacher</string>
+    <string name="hours">Hours</string>
+    <string name="type">Type</string>
+    <string name="semester">Semester</string>
+    <string name="add_lesson">Add Lesson</string>
+    <string name="cash">Cash</string>
+    <string name="date">Date</string>
+    <string name="add_new_payment">Add new Payment</string>
+    <string name="pick_position">Pick position</string>
+    <string name="classroom">Classroom</string>
+    <string name="add_to_schedule">Add to schedule</string>
+    <string name="add_session">Add Session</string>
+    <string name="student_name">Student Name</string>
+    <string name="birthday">Birthday</string>
+    <string name="home_address">Home Address</string>
+    <string name="current_address">Current Address</string>
+    <string name="phone">Phone</string>
+    <string name="course1">Course</string>
+    <string name="faculty1">Faculty</string>
+    <string name="email">Email</string>
+    <string name="privilege">Privilege</string>
+    <string name="parents_name">Parents name</string>
+    <string name="parents_address">Parents address</string>
+    <string name="about_family">About family</string>
+    <string name="average_rating">Average rating</string>
+    <string name="study_form">Study form</string>
+    <string name="add_new_student">Add new student</string>
+    <string name="academical_diary" translatable="false">Academical Diary</string>
+    <string name="lesson_name">Lesson Name</string>
+    <string name="lesson">Lesson</string>
+    <string name="delte">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="students">Students</string>
+    <string name="lessons">Lessons</string>
+    <string name="schedule">Schedule</string>
+    <string name="session">Session</string>
+    <string name="payment">Payment</string>
 </resources>

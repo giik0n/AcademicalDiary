@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AddScheduleActivity extends AppCompatActivity {
+    //окно добавления оплати
     MyDatabaseHelper myDatabaseHelper;
     Spinner lesson, day;
     NumberPicker position;
@@ -61,10 +62,10 @@ public class AddScheduleActivity extends AppCompatActivity {
                 Schedule schedule = new Schedule(id, lesson.getSelectedItem().toString(),day.getSelectedItem().toString(), String.valueOf(position.getValue()),classroom.getText().toString());
                 if (!editMode){
                     myDatabaseHelper.addNewSchedule(schedule);
-                    Toast.makeText(AddScheduleActivity.this, "New lesson added to schedule successfully ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddScheduleActivity.this, R.string.new_lesson_addded_to_schedule_successfully, Toast.LENGTH_SHORT).show();
                 }else{
                     myDatabaseHelper.updateSchedule(schedule);
-                    Toast.makeText(AddScheduleActivity.this, "Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddScheduleActivity.this, R.string.updated, Toast.LENGTH_SHORT).show();
                 }
 
             }

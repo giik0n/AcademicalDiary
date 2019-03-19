@@ -46,7 +46,7 @@ public class SessionFragment extends Fragment {
     ListView listView;
     SearchView search;
     SessionAdapter adapter;
-
+// фрагмент сессии
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

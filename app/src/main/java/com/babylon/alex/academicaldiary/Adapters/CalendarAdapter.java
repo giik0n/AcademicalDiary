@@ -28,6 +28,9 @@ import java.util.List;
 
 public class CalendarAdapter extends BaseAdapter implements Filterable {
 
+    // это адаптер для учебных мероприятий, адаптери нужны для того что б в списках были не просто строчки, а и кнопки, и действия
+    // используеться для редактирования, удаления и поиска елементов в списке
+
     Activity activity;
     List<Calendar> list;
     ArrayList<Calendar> filterList;
@@ -74,12 +77,12 @@ public class CalendarAdapter extends BaseAdapter implements Filterable {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch (menuItem.getItemId()){
-                            case R.id.popup_edit:
+                            case R.id.popup_edit:// кнопка для редактирования елемента
                                 Intent intent = new Intent(activity, AddCalendarActivity.class);
                                 intent.putExtra("Object",(Calendar)list.get(i));
                                 activity.startActivity(intent);
                                 break;
-                            case R.id.popup_delete:
+                            case R.id.popup_delete:// кнопка удаления
                                 myDatabaseHelper.deleteCalendar(list.get(i));
                                 list.remove(i);
                                 notifyDataSetChanged();
@@ -112,7 +115,7 @@ public class CalendarAdapter extends BaseAdapter implements Filterable {
     }
 
 
-    class CustomFilter extends Filter{
+    class CustomFilter extends Filter{// класс-фильтр нужен для поиска по елементам списка
 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {

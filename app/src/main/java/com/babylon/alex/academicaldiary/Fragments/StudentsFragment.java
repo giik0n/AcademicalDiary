@@ -31,7 +31,7 @@ public class StudentsFragment extends Fragment {
     SearchView search;
     StudentsAdapter adapter;
     ImageView upFaculty;
-
+// фрагмент со студентами
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

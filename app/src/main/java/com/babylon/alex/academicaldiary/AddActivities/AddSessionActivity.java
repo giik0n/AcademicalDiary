@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddSessionActivity extends AppCompatActivity {
-
+    //окно добавления сессии
     MyDatabaseHelper myDatabaseHelper;
     Spinner spinner;
     Button dateButton, timeButton, addButton;
@@ -81,7 +81,7 @@ public class AddSessionActivity extends AppCompatActivity {
                         dateButton.setText(day+"."+month+"."+i);
                     }
                 }, year, month, day);
-                mDatePicker.setTitle("Choose Date");
+                mDatePicker.setTitle(getString(R.string.choose_date));
                 mDatePicker.show();
             }
         });
@@ -132,10 +132,10 @@ public class AddSessionActivity extends AppCompatActivity {
 
                 if (!editMode){
                 myDatabaseHelper.addNewSession(session);
-                Toast.makeText(AddSessionActivity.this, "Session added successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddSessionActivity.this, R.string.session_added_successfully, Toast.LENGTH_SHORT).show();
                 }else {
                     myDatabaseHelper.updateSession(session);
-                    Toast.makeText(AddSessionActivity.this, "Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddSessionActivity.this, R.string.updated, Toast.LENGTH_SHORT).show();
                 }
             }
         });

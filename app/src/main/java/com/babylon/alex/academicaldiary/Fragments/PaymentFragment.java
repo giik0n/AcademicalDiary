@@ -46,7 +46,7 @@ public class PaymentFragment extends Fragment {
     public PaymentFragment() {
     }
 
-
+// фргамент оплаты
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class PaymentFragment extends Fragment {
         search = view.findViewById(R.id.searchPayment);
         refreshList();
 
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {// поиск
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -76,7 +76,7 @@ public class PaymentFragment extends Fragment {
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {// долгое нажатие для вызова напоминания
                 final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 View itemView = getLayoutInflater().inflate(R.layout.notify_layout,null);
                 final TextView time = (TextView) itemView.findViewById(R.id.notifyTime);
@@ -89,7 +89,7 @@ public class PaymentFragment extends Fragment {
                 time.setOnClickListener(new View.OnClickListener() {
 
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View v) {//установка времени
                         // TODO Auto-generated method stub
                         Calendar mcurrentTime = Calendar.getInstance();
                         int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
@@ -125,7 +125,7 @@ public class PaymentFragment extends Fragment {
 
                 date.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View view) {// установка дати
                         Calendar mcurrentTime = Calendar.getInstance();
                         int day = mcurrentTime.get(Calendar.DAY_OF_MONTH);
                         int month = mcurrentTime.get(Calendar.MONTH);
@@ -153,7 +153,7 @@ public class PaymentFragment extends Fragment {
 
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View view) {// добавить напоминание
                         if(!time.getText().toString().equals("") && !date.getText().toString().equals("")){
                             String dateText = date.getText().toString();
                             int day = Integer.valueOf(dateText.split("-")[2]);
@@ -188,7 +188,7 @@ public class PaymentFragment extends Fragment {
         return view;
     }
 
-    private void refreshList() {
+    private void refreshList() {// обновление списка
         data = myDatabaseHelper.getPayment();
         adapter = new PaymentAdapter(getActivity(), data);
         listView.setAdapter(adapter);

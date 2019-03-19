@@ -19,6 +19,7 @@ import com.babylon.alex.academicaldiary.pojo.Schedule;
 import java.util.Calendar;
 
 public class AddCalendarActivity extends AppCompatActivity {
+    // окно добавления усчебних мероприятий
     MyDatabaseHelper myDatabaseHelper;
     EditText name, description;
     Button dateButton, timeButton, addButton;
@@ -42,7 +43,7 @@ public class AddCalendarActivity extends AppCompatActivity {
 
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {// вибор дати
                 Calendar mcurrentTime = Calendar.getInstance();
                 int day = mcurrentTime.get(Calendar.DAY_OF_MONTH);
                 int month = mcurrentTime.get(Calendar.MONTH);
@@ -63,7 +64,7 @@ public class AddCalendarActivity extends AppCompatActivity {
                         dateButton.setText(day+"."+month+"."+i);
                     }
                 }, year, month, day);
-                mDatePicker.setTitle("Choose Date");
+                mDatePicker.setTitle(getString(R.string.choose_date));
                 mDatePicker.show();
             }
         });
@@ -82,7 +83,7 @@ public class AddCalendarActivity extends AppCompatActivity {
 
         timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {// вибор времени
                 new TimePickerDialog(AddCalendarActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int i, int i1) {
@@ -103,7 +104,7 @@ public class AddCalendarActivity extends AppCompatActivity {
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {// добавление в бд
                 com.babylon.alex.academicaldiary.pojo.Calendar calendar = new com.babylon.alex.academicaldiary.pojo.Calendar(
                         id,
                         name.getText().toString(),
@@ -113,10 +114,10 @@ public class AddCalendarActivity extends AppCompatActivity {
                 );
                 if (!editMode) {
                     myDatabaseHelper.addNewCalendar(calendar);
-                    Toast.makeText(AddCalendarActivity.this, "Activity added successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddCalendarActivity.this, R.string.activity_added_successfully, Toast.LENGTH_SHORT).show();
                 }else {
                     myDatabaseHelper.updateCalendar(calendar);
-                    Toast.makeText(AddCalendarActivity.this, "Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddCalendarActivity.this, R.string.updated, Toast.LENGTH_SHORT).show();
 
                 }
             }

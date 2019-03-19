@@ -28,6 +28,7 @@ public class LessonsFragment extends Fragment {
     ListView listView;
     SearchView search;
     LessonsAdapter adapter;
+// фрагмент уроков
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,7 +39,7 @@ public class LessonsFragment extends Fragment {
         search = view.findViewById(R.id.searchLessons);
         refreshList();
 
-        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {// поиск
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -58,7 +59,7 @@ public class LessonsFragment extends Fragment {
         return view;
     }
 
-    public void refreshList(){
+    public void refreshList(){// заполнение списка
         data = myDatabaseHelper.getLessons();
         adapter = new LessonsAdapter(getActivity(), data);
         listView.setAdapter(adapter);

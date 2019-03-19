@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddPaymentActivity extends AppCompatActivity {
-
+//окно добавления оплати
     MyDatabaseHelper myDatabaseHelper;
     Spinner spinner;
     EditText cash;
@@ -75,7 +75,7 @@ public class AddPaymentActivity extends AppCompatActivity {
                         date.setText(day+"."+month+"."+i);
                     }
                 }, year, month, day);
-                mDatePicker.setTitle("Choose Date");
+                mDatePicker.setTitle(getString(R.string.choose_date));
                 mDatePicker.show();
             }
         });
@@ -86,10 +86,10 @@ public class AddPaymentActivity extends AppCompatActivity {
                 Payment payment = new Payment(id, spinner.getSelectedItem().toString(), cash.getText().toString(), date.getText().toString());
                 if (!editMode) {
                     myDatabaseHelper.addNewPayment(payment);
-                    Toast.makeText(AddPaymentActivity.this, "New payment added successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPaymentActivity.this, R.string.new_payment_added_successfully, Toast.LENGTH_SHORT).show();
                 }else {
                     myDatabaseHelper.updatePayment(payment);
-                    Toast.makeText(AddPaymentActivity.this, "Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddPaymentActivity.this, R.string.updated, Toast.LENGTH_SHORT).show();
                 }
             }
         });

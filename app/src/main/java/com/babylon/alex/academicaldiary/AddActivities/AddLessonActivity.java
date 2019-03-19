@@ -14,7 +14,7 @@ import com.babylon.alex.academicaldiary.pojo.Lesson;
 import com.babylon.alex.academicaldiary.pojo.Schedule;
 
 public class AddLessonActivity extends AppCompatActivity {
-
+        // окно добавления уроков
     EditText name, teacher, hours, type, semester;
     Button button;
     MyDatabaseHelper myDatabaseHelper;
@@ -42,10 +42,10 @@ public class AddLessonActivity extends AppCompatActivity {
                         semester.getText().toString());
                 if (!editMode){
                     myDatabaseHelper.addNewLesson(lesson);
-                    Toast.makeText(AddLessonActivity.this, "Lesson added successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddLessonActivity.this, R.string.lesson_added_successfully, Toast.LENGTH_SHORT).show();
                 }else{
                     myDatabaseHelper.updateLesson(lesson);
-                    Toast.makeText(AddLessonActivity.this, "Updated!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddLessonActivity.this, R.string.updated, Toast.LENGTH_SHORT).show();
                 }
             }
         });
